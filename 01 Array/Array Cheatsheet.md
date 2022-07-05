@@ -30,11 +30,36 @@ Arrays hold values of the **same type** at **contiguous memory locations**.
 - Subsequence - A sequence that can be derived from the given sequence by deleting some or no elements without changing the order of the remaining elements.
   - Example: given an array `[2, 3, 6, 1, 5, 4]`, `[3, 1, 5]` is a subsequence but `[3, 5, 1]` is not a subsequence.
 
+### Time Complexity
 
+| **Operation** | **Big-O**  | **Note**  |
+| :------- | :--- | :--- |
+| Access | O(1) |        |
+| Search | O(n) |        |
+| Search (**sorted array**) | O(log(n)) | Binary Search       |
+| Insert | O(n) | Insertion would require shifting all the subsequent elements to the right by one and that takes O(n)       |
+|Insert(at the end)| O(1) | Special case of insertion where no other element needs to be shifted       |
+| Remove | O(n) | Removal would require shifting all the subsequent elements to the left by one and that takes O(n)       |
+| Remove (at the end) | O(1) |  Special case of removal where no other element needs to be shifted      |
 
+### Things to look out for during interviews
 
+- Clarify if there are **duplicate values** in the array. Would the presence of duplicate values affect the answer? Does it make the question simpler or harder?
+- When using an index to iterate through array elements, be careful not to go out of **bounds**.
+- Be mindful about slicing or concatenating arrays in your code. Typically, slicing and concatenating arrays would take O(n) time. Use start and end indices to set the **boundary** of a subarray/range where possible.
 
+### Corner cases
 
+- Empty sequence
+- Sequence with 1 or 2 elements
+- Sequence with repeated elements
+- Duplicated values in the sequence
+
+### Techniques
+
+> Note that because both arrays and strings are sequences (a string is an array of characters), most of the techniques here will apply to string problems.
+
+#### - Sliding Window
 
 
 
