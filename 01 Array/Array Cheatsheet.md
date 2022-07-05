@@ -12,7 +12,7 @@ Arrays hold values of the **same type** at **contiguous memory locations**.
 ### Advantages of Using Array
 
 - Store multiple elements of the same type with one single variable name
-- Accessing elements is fast as long as you have the index, as opposed to [linked lists] where you have to traverse from the head.
+- Accessing elements is fast as long as you have the index, as opposed to [linked lists]() where you have to traverse from the head.
 
 
 ### Disadvantages
