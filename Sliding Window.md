@@ -74,7 +74,7 @@ def find_average(arr,K):
 find_average([1, 3, 2, 6, -1, 4, 1, 8, 2], 5)
 ```
 
-### Problem : Maximum Sum Subarray of Size K - Easy
+### Problem : [Maximum Sum Subarray of Size K - Easy](https://leetcode.com/problems/maximum-subarray/)
 
 > Given an array of positive numbers and a positive number ‘k’, find the maximum sum of any contiguous subarray of size ‘k’.
 
@@ -91,6 +91,9 @@ Input: [2, 3, 4, 1, 5], k=2
 Output: 7
 Explanation: Subarray with maximum sum is [3, 4].
 ```
+
+My Code: 
+
 ```python
 
 def find_maxsum(arr,K):
@@ -115,15 +118,35 @@ find_maxsum([2, 1, 5, 1, 3, 2], 3)
 find_maxsum([2, 3, 4, 1, 5], 2)
 ```
 
+##### Time Complexity #
+The time complexity of the above algorithm will be O(N).
+
+##### Space Complexity #
+The algorithm runs in constant space O(1).
 
 
+### Problem : Smallest Subarray with a given sum - Easy
 
+> Given an array of positive numbers and a positive number ‘S’, find the length of the smallest contiguous subarray whose sum is greater than or equal to ‘S’. Return 0, if no such subarray exists.
 
+This problem follows the Sliding Window pattern, however, **the size of the sliding window is not fixed**. 
 
+Here is how we will solve this problem:
 
+1. First, we will add-up elements from the beginning of the array until their sum becomes greater than or equal to ‘S’.
+These elements will constitute our sliding window. We are asked to find the smallest such window having a sum greater than or equal to ‘S’. We will remember the length of this window as the smallest window so far.
+2. After this, we will keep adding one element in the sliding window (i.e. slide the window ahead), in a stepwise fashion.
+3. In each step, we will also try to shrink the window from the beginning. We will shrink the window until the window’s sum is smaller than ‘S’ again. This is needed as we intend to find the smallest window. This shrinking will also happen in multiple steps; in each step we will do two things:
+  - Check if the current window length is the smallest so far, and if so, remember its length.
+  - Subtract the first element of the window from the running sum to shrink the sliding window.
 
+Here is the visual representation of this algorithm for the Example-1
 
+<img width="424" alt="Screen Shot 2022-07-09 at 11 05 06" src="https://user-images.githubusercontent.com/103771536/178111345-20fbc920-8d72-4274-a9aa-d277c070f542.png">
 
+<img width="414" alt="Screen Shot 2022-07-09 at 11 05 25" src="https://user-images.githubusercontent.com/103771536/178111357-709f088d-e881-44d4-87e3-66541def2999.png">
+
+<img width="392" alt="Screen Shot 2022-07-09 at 11 05 51" src="https://user-images.githubusercontent.com/103771536/178111371-f0688716-8073-4955-ac86-537c864f95bb.png">
 
 
 
