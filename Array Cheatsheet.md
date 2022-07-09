@@ -2,12 +2,14 @@
 
 Arrays hold values of the **same type** at **contiguous memory locations**. 
 
-### Difference of Array and List in Python
+### Difference of Array and List in Python 
 
 - List is built in, and array needs import
 - An array is faster than a list in python since all the elements stored in an array are homogeneous (they have the same data type), whereas a list contains heterogeneous elements.
 - Python arrays are implemented in C which makes it a lot faster than lists that are built-in in Python itself.
 - Array has a fixed sized and cannot resize (need to be copied to a bigger array), whereas list can be resized.
+
+> array in python (https://www.guru99.com/array-data-structure.html)
 
 ### Advantages of Using Array
 
@@ -60,6 +62,15 @@ Arrays hold values of the **same type** at **contiguous memory locations**.
 > Note that because both arrays and strings are sequences (a string is an array of characters), most of the techniques here will apply to string problems.
 
 #### - Sliding Window
+
+Master the sliding window technique that applies to many subarray/substring problems. 
+
+In a sliding window, the two pointers usually move in the same direction will never overtake each other. This ensures that each value is only visited at most twice and the time complexity is still O(n).
+
+Examples:
+> - [Pattern - Sliding Window]()
+> - [Leetcode : Longest Substring Without Repeating Characters - Medium](https://leetcode.com/problems/longest-substring-without-repeating-characters/)
+> - [Leetcode: Minimum Size Subarray Sum - Medium](https://leetcode.com/problems/minimum-size-subarray-sum/)
 
 
 
