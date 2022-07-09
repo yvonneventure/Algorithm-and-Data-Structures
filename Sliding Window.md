@@ -127,7 +127,7 @@ The algorithm runs in constant space O(1).
 
 ### Problem : Smallest Subarray with a given sum - Easy
 
-> Given an array of positive numbers and a positive number ‘S’, find the length of the smallest contiguous subarray whose sum is greater than or equal to ‘S’. Return 0, if no such subarray exists.
+> Given an array of positive numbers and a positive number ‘S’, find the length of the smallest contiguous subarray whose sum is greater than or equal to ‘S’. **Return 0, if no such subarray exists**.
 
 This problem follows the Sliding Window pattern, however, **the size of the sliding window is not fixed**. 
 
@@ -148,8 +148,41 @@ Here is the visual representation of this algorithm for the Example-1
 
 <img width="392" alt="Screen Shot 2022-07-09 at 11 05 51" src="https://user-images.githubusercontent.com/103771536/178111371-f0688716-8073-4955-ac86-537c864f95bb.png">
 
+My code:
+
+```python
+import math
+
+def find_smallest_subarray_with_given_sum(arr,S):
+  end_result=[]
+  window_start=0
+  window_sum=0
+  min_len=math.inf  ## first set the length to infinity
+  
+  for window_end in range(len(arr)):
+    window_sum+=arr[window_end] 
+    while window_sum>=S:  ## when window sum is greater than or equal to the given sum, record the min_len, then substract the first element and moving the window ahead
+      if len(arr[window_start:window_end+1])<=min_len:
+        end_result=arr[window_start:window_end+1]
+        min_len=len(end_result)  
+      window_sum-=arr[window_start] # subtract first element
+      window_start+=1 #slide the window ahead
+  if min_len==math.inf:  ## if no such subarray exists
+    return print(0)
+  return print(f'Explanation: Subarray with given sum {S} is {end_result} \nMinimum length is {min_len}')
 
 
+find_smallest_subarray_with_given_sum([2, 1, 5, 2, 3, 2], 7)
+find_smallest_subarray_with_given_sum([2, 1, 5, 2, 8], 7)
+find_smallest_subarray_with_given_sum([3, 4, 1, 1, 6], 8)
+find_smallest_subarray_with_given_sum([3, 4, 1, 1, 6], 50)
+```
+
+##### Time Complexity #
+The time complexity of the above algorithm will be O(N). The outer for loop runs for all elements and the inner while loop processes each element only once, therefore the time complexity of the algorithm will be O(N+N) which is asymptotically equivalent to O(N).
+
+##### Space Complexity #
+The algorithm runs in constant space O(1).
 
 
 
