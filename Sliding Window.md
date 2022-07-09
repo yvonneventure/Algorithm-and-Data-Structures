@@ -295,8 +295,45 @@ This problem follows the Sliding Window pattern and we can use a similar dynamic
 
 We can use a **HashMap** to remember the last **index** of each character we have processed. Whenever we get a repeating character we will shrink our sliding window to ensure that we always have distinct characters in the sliding window.
 
+ ```python
+ 
+def find_nonrepeat_substring(str):
+  window_start=0
+  chars={}
+  max_len=0
+ ## move window-end one by one
+  for window_end in range(len(str)):
+    str_end=str[window_end]   
+    
+    ## check if the charater is already in the hashmap
+    
+    if str_end in chars:  # if it's in the hashmap, meaning we have a duplicate, shrink the window by moving window start one step ahead of it's last appearance
+      window_start=max(window_start,chars[str_end]+1)
+      
+    #if not there, meaning the first time, add the letter and it's index into the hashmap
+     #whether if exists or not, the index of the str_end will be updated 
+    chars[str_end]=window_end
+    
+    ## only update the end result when the substring length is longer than the last satisfied substring
+    if window_end-window_start+1>max_len:
+     max_len=window_end-window_start+1
+     result=str[window_start:window_end+1] 
+  
+  
+  return print(f'Explanation: substring with longest nonrepeating characters is {result} \nMaximum Length is {max_len}')
 
+find_nonrepeat_substring("aabccbb")
+find_nonrepeat_substring("abbbb")
+find_nonrepeat_substring("abccde")
+```
 
+> Use step through to see the execution order https://pythontutor.com/render.html#mode=display
+
+#### Time Complexity #
+The time complexity of the above algorithm will be O(N) where ‘N’ is the number of characters in the input string.
+
+#### Space Complexity #
+The space complexity of the algorithm will be O(K) where K is the number of distinct characters in the input string. This also means K<=N, because in the worst case, the whole string might not have any repeating character so the entire string will be added to the HashMap. Having said that, since we can expect a fixed set of characters in the input string (e.g., 26 for English letters), we can say that the algorithm runs in fixed space O(1); in this case, we can use a fixed-size array instead of the HashMap.
 
 
 
