@@ -125,7 +125,7 @@ The time complexity of the above algorithm will be O(N).
 The algorithm runs in constant space O(1).
 
 
-### Problem : Smallest Subarray with a given sum - Easy
+### Problem : [Smallest Subarray with a given sum - Easy](https://leetcode.com/problems/minimum-size-subarray-sum/)
 
 > Given an array of positive numbers and a positive number ‘S’, find the length of the smallest contiguous subarray whose sum is greater than or equal to ‘S’. **Return 0, if no such subarray exists**.
 
@@ -230,8 +230,70 @@ Here is the visual representation of this algorithm for the Example-1:
 
 My code:
 
+```python
+def find_longest_substring_with_distinct_chars(str,K):
+  window_start=0
+  chars={}
+  max_len=0
+  ## for loop here is to add elements in window/hashmap with window start unchanged
+  # str_end is the end/right letter of the window string
+  # window_end is the index of the end/right letter of the window string
+  for window_end in range(len(str)):
+    str_end=str[window_end]   
+    if str_end not in chars:
+      chars[str_end]=0
+    chars[str_end]+=1
+  ## while loop is to check the constraint, record the current result and shrink the window string
+    while len(chars)>K:
+      if window_end- window_start>=max_len:
+        result=str[window_start:window_end]
+        max_len=window_end- window_start
+      str_start=str[window_start]
+      chars[str_start]-=1
+      if chars[str_start]==0:
+        del chars[str_start]
+      window_start+=1
+  
+  return print(f'Explanation: substring with longest K distinct characters is {result} \nMaximum Length is {max_len}')
+
+find_longest_substring_with_distinct_chars("araaci",2)
+find_longest_substring_with_distinct_chars("araaci",1)
+find_longest_substring_with_distinct_chars("cbbebi",3)
+```
+
+#### Time Complexity #
+The time complexity of the above algorithm will be O(N) where ‘N’ is the number of characters in the input string. The outer for loop runs for all characters and the inner while loop processes each character only once, therefore the time complexity of the algorithm will be O(N+N) which is asymptotically equivalent to O(N).
+
+#### Space Complexity #
+The space complexity of the algorithm is O(K), as we will be storing a maximum of ‘K+1’ characters in the HashMap.
 
 
+### Probelm: [No-repeat Substring - Hard](https://leetcode.com/problems/longest-substring-without-repeating-characters/)
+
+> Given a string, find the length of the longest substring which has no repeating characters.
+
+Example 1:
+```
+Input: String="aabccbb"
+Output: 3
+Explanation: The longest substring without any repeating characters is "abc".
+```
+Example 2:
+```
+Input: String="abbbb"
+Output: 2
+Explanation: The longest substring without any repeating characters is "ab".
+```
+Example 3:
+```
+Input: String="abccde"
+Output: 3
+Explanation: Longest substrings without any repeating characters are "abc" & "cde".
+```
+
+This problem follows the Sliding Window pattern and we can use a similar dynamic sliding window strategy as discussed in Longest Substring with K Distinct Characters.
+
+We can use a **HashMap** to remember the last **index** of each character we have processed. Whenever we get a repeating character we will shrink our sliding window to ensure that we always have distinct characters in the sliding window.
 
 
 
