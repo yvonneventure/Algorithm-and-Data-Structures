@@ -38,7 +38,7 @@ find_average([1, 3, 2, 6, -1, 4, 1, 8, 2], 5)
 # output - Averages of subarrays of size K: [2.2, 2.8, 2.4, 3.6, 2.8]
 ```
 
-**Time complexity**: Since for every element of the input array, we are calculating the sum of its next ‘K’ elements, the time complexity of the above algorithm will be O(N∗K) where ‘N’ is the number of elements in the input array and K is the size of the window.
+**Time complexity**: Since for every element of the input array, we are calculating the sum of its next ‘K’ elements, the time complexity of the above algorithm will be **O(N∗K)** where ‘N’ is the number of elements in the input array and K is the size of the window.
 
 Can we find a better solution? Do you see any inefficiency in the above approach?
 
@@ -52,6 +52,90 @@ As you can see, there are four overlapping elements between the subarray (indexe
 The efficient way to solve this problem would be to visualize each contiguous subarray as a sliding window of ‘5’ elements. This means that when we move on to the next subarray, we will slide the window by one element. So, to reuse the sum from the previous subarray, we will subtract the element going out of the window and add the element now being included in the sliding window. This will save us from going through the whole subarray to find the sum and, as a result, the algorithm complexity will reduce to **O(N)**.
 
 <img width="877" alt="Screen Shot 2022-07-09 at 10 15 46" src="https://user-images.githubusercontent.com/103771536/178109624-a7253324-5f33-4e61-9ec6-189b7df8e8ca.png">
+
+Here's the algorithm: form the window and adding elements, when window size hits, do the calculation then slide the window
+
+```python
+def find_average(arr,K):
+  end_result=[]
+  window_start=0
+  window_sum=0
+  for window_end in range(len(arr)):
+    window_sum+=arr[window_end] #adding the next element
+    # slide the window, we don't need to slide the window if we are not hitting the window size K
+    if window_end>=K-1:
+      end_result.append(window_sum/K)
+      window_sum-=arr[window_start] # subtract first element
+      window_start+=1 #slide the window ahead
+      
+  return print(f'average array is {end_result}')
+
+
+find_average([1, 3, 2, 6, -1, 4, 1, 8, 2], 5)
+```
+
+### Problem : Maximum Sum Subarray of Size K - Easy
+
+> Given an array of positive numbers and a positive number ‘k’, find the maximum sum of any contiguous subarray of size ‘k’.
+
+Example 1:
+```
+Input: [2, 1, 5, 1, 3, 2], k=3 
+Output: 9
+Explanation: Subarray with maximum sum is [5, 1, 3].
+```
+
+Example 2:
+```
+Input: [2, 3, 4, 1, 5], k=2 
+Output: 7
+Explanation: Subarray with maximum sum is [3, 4].
+```
+```python
+
+def find_maxsum(arr,K):
+  end_result=[]
+  window_start=0
+  window_sum=0
+  max_sum=0
+  for window_end in range(len(arr)):
+    window_sum+=arr[window_end] #adding the next element
+   
+    if window_end>=K-1:
+      if window_sum>max_sum:
+        max_sum=window_sum      ## can also use max_sum=max(max_sum,window_sum) to updated max_sum, but won't get the subarray
+        end_result=arr[window_start:window_end+1]
+      window_sum-=arr[window_start] # subtract first element
+      window_start+=1 #slide the window ahead
+      
+  return print(f'Explanation: Subarray with maximum sum is {end_result} \nOutput is {max_sum}')
+
+
+find_maxsum([2, 1, 5, 1, 3, 2], 3)
+find_maxsum([2, 3, 4, 1, 5], 2)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
