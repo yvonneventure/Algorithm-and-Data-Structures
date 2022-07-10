@@ -288,7 +288,7 @@ search_triplets([-5, 2, -1, -2, 3])
 
 #### Time complexity #
 
-Sorting the array will take O(N * logN)([Quick Sort](). The `searchPair()` function will take O(N). As we are calling searchPair() for every number in the input array, this means that overall s`earchTriplets()` will take O(N * logN + N^2), which is asymptotically equivalent to O(N^2).
+Sorting the array will take O(N * logN)([Quick Sort]()). The `searchPair()` function will take O(N). As we are calling searchPair() for every number in the input array, this means that overall s`earchTriplets()` will take O(N * logN + N^2), which is asymptotically equivalent to O(N^2).
 
 #### Space complexity #
 Ignoring the space required for the output array, the space complexity of the above algorithm will be O(N) which is required for sorting.
@@ -302,11 +302,52 @@ Ignoring the space required for the output array, the space complexity of the ab
 > 
 > The flag of the Netherlands consists of three colors: red, white and blue; and since our input array also consists of three different numbers that is why it is called Dutch National Flag problem.
 
+Example 1:
+```
+Input: [1, 0, 2, 1, 0]
+Output: [0, 0, 1, 1, 2]
+```
+Example 2:
+```
+Input: [2, 2, 0, 1, 2, 0]
+Output: [0, 0, 1, 2, 2, 2]
+```
 
+The brute force solution will be to use an in-place sorting algorithm like **Heapsort** which will take O(N*logN). Can we do better than this? Is it possible to sort the array in one iteration?
 
+We can use a Two Pointers approach while iterating through the array. Let’s say the two pointers are called `low` and `high` which are pointing to the first and the last element of the array respectively. So while iterating, we will move all 0s before `low` and all 2s after `high` so that in the end, all 1s will be between `low` and `high`.
 
+```python
+def color_sort(arr):
+    # all elements <low are 0, and all elements>high are 2
+    # all elements from >= low <i are 1
+    low=0
+    high=len(arr)-1
+    i=0
+    while i<=high:
+        if arr[i]==0:
+            arr[i],arr[low]=arr[low],arr[i]
+        # increment i and low
+            i+=1
+            low+=1
+        elif arr[i]==1:
+            i+=1
+        else:
+            arr[i],arr[high]=arr[high],arr[i]
+            #decrement high only, after the swap, number at index i could be 0,1,2, so i should not be incremented
+            high-=1
 
+    return print(f'Sorted array is {arr}')
 
+color_sort([1, 0, 2, 1, 0])
+color_sort([2, 2, 0, 1, 2, 0])
+```
+
+#### Time complexity #
+The time complexity of the above algorithm will be O(N) as we are iterating the input array only once.
+
+#### Space complexity #
+The algorithm runs in constant space O(1).
 
 
 
