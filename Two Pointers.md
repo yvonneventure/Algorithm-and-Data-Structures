@@ -139,10 +139,65 @@ Output: 2
 Explanation: The first two elements after removing every 'Key' will be [11, 1].
 ```
 
+My code:
+```python
+def remove_keys(arr,K):
+    left_pointer=0
+    right_pointer = 0
+    while right_pointer < len(arr):
+        if arr[right_pointer]==K:
+            del arr[right_pointer]
 
 
+        else:
+            right_pointer+=1
+            left_pointer+=1
+
+    return print(f' length of the array is {left_pointer} and array {arr}')
 
 
+remove_keys([2, 3, 3, 3, 6, 9, 9],3)
+remove_keys([2, 2, 2, 11],2)
+```
+
+Solution code:
+
+```python
+def remove_keys(arr,K):
+    left_pointer=0
+   
+    for right_pointer in range(len(arr)):
+        if arr[right_pointer]!= K:
+           
+            left_pointer+=1
+
+    return print(f' length of the array is {left_pointer} and array {arr}')
+```
+
+### Problem : Squaring a Sorted Array - Easy
+
+> Given a sorted array, create a new array containing squares of all the number of the input array in the sorted order.
+
+Example 1:
+```
+Input: [-2, -1, 0, 2, 3]
+Output: [0, 1, 4, 4, 9]
+```
+Example 2:
+```
+Input: [-3, -1, 0, 1, 2]
+Output: [0, 1, 1, 4, 9]
+```
+
+This is a straightforward question. The only trick is that we can have negative numbers in the input array, which will make it a bit difficult to generate the output array with squares in sorted order.
+
+An easier approach could be to first find the index of the first non-negative number in the array. After that, we can use Two Pointers to iterate the array. One pointer will move forward to iterate the non-negative numbers and the other pointer will move backward to iterate the negative numbers. At any step, whichever number gives us a bigger square will be added to the output array.
+
+<img width="335" alt="Screen Shot 2022-07-10 at 11 07 23" src="https://user-images.githubusercontent.com/103771536/178150579-9f4ffbf9-3505-48c3-bb3d-c6e4bef4cc7a.png">
+
+Since the numbers at both the ends can give us the largest square, an alternate approach could be to use two pointers starting at both the ends of the input array. At any step, whichever pointer gives us the bigger square we add it to the result array and move to the next/previous number according to the pointer.
+
+<img width="302" alt="Screen Shot 2022-07-10 at 11 08 03" src="https://user-images.githubusercontent.com/103771536/178150607-52fa16a3-9a76-491f-adbf-b431f3ca7b5c.png">
 
 
 
