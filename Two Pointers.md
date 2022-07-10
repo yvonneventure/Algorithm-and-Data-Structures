@@ -199,8 +199,45 @@ Since the numbers at both the ends can give us the largest square, an alternate 
 
 <img width="302" alt="Screen Shot 2022-07-10 at 11 08 03" src="https://user-images.githubusercontent.com/103771536/178150607-52fa16a3-9a76-491f-adbf-b431f3ca7b5c.png">
 
+```python
+def make_squares(arr):
+    n = len(arr)
+    squares=[0 for x in range(n)]
+    pointer= n-1
+    left=0
+    right=n-1
+    while left<=right:
+        leftsq=arr[left]*arr[left]
+        rightsq = arr[right] * arr[right]
+        if leftsq>rightsq:
+            squares[pointer]=leftsq
+            left+=1
+        else:
+            squares[pointer] = rightsq
+            right-=1
+        pointer-=1
+    return print(f'squares array is {squares}')
+
+make_squares([-2, 2, 3,])
+make_squares([-1, 0, 2, 4])
+```
+
+#### Time complexity #
+The time complexity of the above algorithm will be O(N) as we are iterating the input array only once.
+
+#### Space complexity #
+The space complexity of the above algorithm will also be O(N); this space will be used for the output array.
 
 
+### Problem: [Triplet Sum to Zero - Medium](https://leetcode.com/problems/3sum/)
+
+
+
+
+
+
+
+### Problem: [Dutch National Flag Problem - Medium](https://leetcode.com/problems/sort-colors/)
 
 
 
