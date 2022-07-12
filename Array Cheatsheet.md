@@ -61,7 +61,7 @@ Arrays hold values of the **same type** at **contiguous memory locations**.
 
 > Note that because both arrays and strings are sequences (a string is an array of characters), most of the techniques here will apply to string problems.
 
-#### - Sliding Window
+### - Sliding Window
 
 Master the sliding window technique that applies to many subarray/substring problems. 
 
@@ -69,17 +69,74 @@ In a sliding window, the two pointers usually move in the same direction will ne
 
 Examples:
 > - [Pattern - Sliding Window]()
-> - [Leetcode : Longest Substring Without Repeating Characters - Medium](https://leetcode.com/problems/longest-substring-without-repeating-characters/)
-> - [Leetcode: Minimum Size Subarray Sum - Medium](https://leetcode.com/problems/minimum-size-subarray-sum/)
+> - [Problem : Longest Substring Without Repeating Characters - Medium](https://leetcode.com/problems/longest-substring-without-repeating-characters/)
+> - [Problem: Minimum Size Subarray Sum - Medium](https://leetcode.com/problems/minimum-size-subarray-sum/)
+> - [Problem: Minimum Window Substring - Hard](https://leetcode.com/problems/minimum-window-substring/)
 
 
+### - Two Pointers
 
+Two pointers is a more general version of sliding window where the pointers can cross each other and can be on different arrays. 
 
+When you are given two arrays to process, it is common to have one index per array (pointer) to traverse/compare the both of them, incrementing one of the pointers when relevant. 
 
+Examples:
+> -  [Pattern - Two Pointers]()
 
+### - Traversing from the right
 
+Sometimes you can traverse the array starting from the right instead of the conventional approach of from the left. 
 
+Examples: 
+> - [Problem: Daily Temperatures - Medium](https://leetcode.com/problems/daily-temperatures/)
+> - [Problem: Number of Visible People in a Queue -Hard(https://leetcode.com/problems/number-of-visible-people-in-a-queue/)
 
+### - Sorting the array
+
+Is the array sorted or partially sorted? If it is, some form of binary search should be possible. This also usually means that the interviewer is looking for a solution that is faster than O(n).
+
+Can you sort the array? Sometimes sorting the array first may significantly simplify the problem. Obviously this would not work if the order of array elements need to be preserved. 
+
+Examples: 
+> - [Pattern : Merge Intervals]()
+> - [Problem : Merge Intervals - Medium](https://leetcode.com/problems/merge-intervals/)
+> - [Non-overlapping Intervals - Medium](https://leetcode.com/problems/non-overlapping-intervals/)
+
+### - Precomputation
+
+For questions where summation or multiplication of a subarray is involved, pre-computation using hashing or a prefix/suffix sum/product might be useful. 
+
+Examples: 
+
+> - [Problem: Product of Array Except Self - Medium](https://leetcode.com/problems/product-of-array-except-self/)
+> - [Problem: Minimum Size Subarray Sum](https://leetcode.com/problems/minimum-size-subarray-sum/)
+> - [Problems: LeetCode questions tagged "prefix-sum"](https://leetcode.com/tag/prefix-sum/)
+
+### Index has a hash key
+
+If you are given a sequence and the interviewer asks for O(1) space, it might be possible to use the array itself as a hash table. For example, if the array only has values from 1 to N, where N is the length of the array, negate the value at that index (minus one) to indicate presence of that number. 
+
+Examples: 
+
+> - [Problem: First Missing Positive - Hard](https://leetcode.com/problems/first-missing-positive/)
+> - [Problem: Daily Temperatures - Medium](https://leetcode.com/problems/daily-temperatures/)
+
+### - Traversing the array more than once
+
+This might be obvious, but traversing the array twice/thrice (as long as fewer than n times) is still O(n). Sometimes traversing the array more than once can help you solve the problem while keeping the time complexity to O(n).
+
+## Essential Questions
+
+> - [Problem: Two Sum - Easy](https://leetcode.com/problems/two-sum/)
+> - [Problem: Best Time to Buy and Sell Stock - Easy](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)
+> - [Problem: Product of Array Except Self - Medium](https://leetcode.com/problems/product-of-array-except-self/)
+> - [Problem: Maximum Subarray - Medium](https://leetcode.com/problems/maximum-subarray/)
+> - [Problem: Contains Duplicate - Easy](https://leetcode.com/problems/contains-duplicate/)
+> - [Problem: Maximum Product Subarray - Medium](https://leetcode.com/problems/maximum-product-subarray/)
+> - [Problem: Search in Rotated Sorted Array - Medium](https://leetcode.com/problems/search-in-rotated-sorted-array/)
+> - [Problem: 3Sum - Medium](https://leetcode.com/problems/3sum/)
+> - [Problem: Container With Most Water - Medium](https://leetcode.com/problems/container-with-most-water/)
+> - [Problem: Sliding Window Maximum - Hard](https://leetcode.com/problems/sliding-window-maximum/)
 
 
 
