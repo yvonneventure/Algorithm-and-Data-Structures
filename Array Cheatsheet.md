@@ -89,7 +89,7 @@ Sometimes you can traverse the array starting from the right instead of the conv
 
 Examples: 
 > - [Problem: Daily Temperatures - Medium](https://leetcode.com/problems/daily-temperatures/)
-> - [Problem: Number of Visible People in a Queue -Hard(https://leetcode.com/problems/number-of-visible-people-in-a-queue/)
+> - [Problem: Number of Visible People in a Queue -Hard](https://leetcode.com/problems/number-of-visible-people-in-a-queue/)
 
 ### - Sorting the array
 
