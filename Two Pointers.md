@@ -350,7 +350,9 @@ The time complexity of the above algorithm will be O(N) as we are iterating the 
 The algorithm runs in constant space O(1).
 
 
+### Problem : [Palindromic Substrings - Medium](https://leetcode.com/problems/palindromic-substrings/)
 
+### Problem : [Merge Sorted Array - Easy](https://leetcode.com/problems/merge-sorted-array/)
 
 
 
