@@ -54,9 +54,44 @@ The diagram above clearly shows a merging approach. Our algorithm will look like
  ```
  3. We will keep repeating the above two steps to merge ‘c’ with the next interval if it overlaps with ‘c’.
 
+My Code:
+```
+def merge_intervals(intervals):
+    if len(intervals)<2:
+        return intervals
+
+    #lamda sort: sort intervals based on the elements at position 0
+    intervals.sort(key = lambda x:x[0])
+    #after sort, a[0] will always be less than b[0]
+    start=intervals[0][0]
+    end=intervals[0][1]
+
+    merged=[]
+    for i in range(1,len(intervals)):
+        interval=intervals[i]
+        if end>=interval[0]:  ## a and b overlap, update end to the max
+            end = max(end, interval[1])
 
 
+        else:  ## a and b do not overlap, keep record of
+            merged.append([start,end])
+            end = interval[1]
+            start = interval[0]
 
+    merged.append([start, end])
+    return print(merged)
+
+merge_intervals([[1,4], [2,5], [7,9]])
+merge_intervals([[6,7], [2,4], [5,9]])
+merge_intervals([[1,4], [2,6], [3,5]])
+```
+
+#### Time complexity 
+
+The time complexity of the above algorithm is O(N * logN), where ‘N’ is the total number of intervals. We are iterating the intervals only once which will take O(N), in the beginning though, since we need to sort the intervals, our algorithm will take O(N * logN).
+
+#### Space complexity 
+The space complexity of the above algorithm will be O(N) as we need to return a list containing all the merged intervals. We will also need O(N) space for sorting. Overall, our algorithm has a space complexity of O(N).
 
 
 
